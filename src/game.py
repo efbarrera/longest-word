@@ -4,6 +4,7 @@ Incluye métodos para generar un tablero y validar palabras.
 """
 
 import random
+import requests
 from collections import Counter
 
 class Game:
@@ -35,4 +36,10 @@ class Game:
             if grid_count[letter] < count:
                 return False
 
-        return True
+        return self.__check_dictionary(word)
+
+    @staticmethod
+    def __check_dictionary(word):
+        response = requests.get(f"https://dictionary.lewagon.com/{word}")
+        json_response = response.json()
+        return json_response['found']
