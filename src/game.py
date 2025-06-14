@@ -36,7 +36,7 @@ class Game:
             if grid_count[letter] < count:
                 return False
 
-        return True
+        return self.__check_dictionary(word)
 
     @staticmethod
     def __check_dictionary(word):
